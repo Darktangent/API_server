@@ -55,7 +55,7 @@ app.use(bodyParser.json())
 app.use(cors())
 app.get('/',(req,res)=>{
 
-    res.json('welcome').status(200)
+    res.send('welcome').status(200)
 })
 app.get('/profile/:id',(req,res)=>{profile.handleProfile(req,res,db)})
    // let found = false
@@ -220,6 +220,6 @@ app.post('/imageurl', (req,res)=>{image.handleApliCall(req,res)})
 
 
 
-app.listen(3001, ()=>{
-    console.log('App is running')
+app.listen(process.env.PORT || 3001, ()=>{
+    console.log(`App is running on port ${process.env.PORT}`)
 })
